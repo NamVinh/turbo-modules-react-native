@@ -1,20 +1,17 @@
 {
   "name": "biso24-share-app",
   "private": true,
-  "workspaces": [
-    "modules/*",
-    "packages/**/*"
-  ],
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "yarn pretty --filter=\"./packages/**/*\""
+  "workspaces": {
+    "packages": [
+      "modules/*",
+      "packages/**/*"
+    ],
+    "nohoist": [
+      "**/@react-native-async-storage/async-storage",
+      "**/react",
+      "**/react-native",
+      "**/react-native/**"
     ]
-  },
-  "engines": {
-    "node": ">= v18.14.0",
-    "npm": "please-use-yarn",
-    "pnpm": "please-use-yarn",
-    "yarn": ">= v1.22.19"
   },
   "scripts": {
     "build": "turbo build",
@@ -22,9 +19,35 @@
     "lint": "turbo lint",
     "pretty": "eslint --fix && prettier --write",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "prepare": "husky"
+		"prepare": "husky install"
   },
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged"
+		}
+	},
+	"lint-staged": {
+		"*.{js,jsx,ts,tsx}": [
+			"yarn pretty --filter=\"./packages/**/*\""
+		]
+	},
+	"engines": {
+		"node": ">= v18.14.0",
+		"npm": "please-use-yarn",
+		"pnpm": "please-use-yarn",
+		"yarn": ">= v1.22.19"
+	},
   "dependencies": {
+    "@biso24/assets": "*",
+		"@biso24/components": "*",
+		"@biso24/constants": "*",
+		"@biso24/features": "*",
+		"@biso24/hooks": "*",
+		"@biso24/services": "*",
+		"@biso24/tailwind": "*",
+		"@biso24/theme": "*",
+		"@biso24/types": "*",
+		"@biso24/utils": "*",
     "react": "^18.2.0",
     "react-native": "^0.73.6"
   },
@@ -40,6 +63,7 @@
     "@types/react": "^18.2.74",
     "@typescript-eslint/eslint-plugin": "^6.4.0",
     "@typescript-eslint/parser": "^7.5.0",
+    "babel-plugin-module-resolver": "^5.0.0",
     "commitlint-config-standard-commitlint": "*",
     "eslint": "^8.0.1",
     "eslint-config-prettier": "^9.1.0",
@@ -57,6 +81,7 @@
     "lint-staged": "^15.2.2",
     "prettier": "^3.2.5",
     "prettier-eslint": "^16.3.0",
+    "react-native-monorepo-tools": "^1.2.1",
     "standard-prettier": "*",
     "tsconfig": "*",
     "turbo": "latest"

@@ -1,14 +1,19 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# turbo
+.turbo
 
 # dependencies
 node_modules
 
-# osx
+# build
+dist
+
+# env
+.env
+
+# misc
 .DS_Store
-
-# yarn
 yarn.lock
-yarn-error.log
 
-# turbo
-.turbo
+
+# Biso24 modules
+modules
