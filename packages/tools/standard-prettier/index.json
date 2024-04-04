@@ -7,5 +7,22 @@
   "singleQuote": true,
   "arrowParens": "always",
   "trailingComma": "all",
-  "endOfLine": "auto"
+  "endOfLine": "auto",
+
+  "importOrder": [
+    "^~/(.*)$",
+    "^~/app/(.*)$",
+    "^~/assets/(.*)$",
+    "^~/components/(.*)$",
+    "^~/constants/(.*)$",
+    "^~/pages/(.*)$",
+    "^~/stores/(.*)$",
+    "^~/types/(.*)$",
+    "^~/utils/(.*)$",
+    "^[./]"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true,
+  "tailwindFunctions": ["tw"],
+  "plugins": ["@trivago/prettier-plugin-sort-imports", "prettier-plugin-tailwindcss"]
 }
