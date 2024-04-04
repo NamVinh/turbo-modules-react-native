@@ -17,6 +17,9 @@ module.exports = {
   rules: {
     "autofix/arrow-body-style": ["error", "always"],
 
+    // TS rules
+    "@typescript-eslint/explicit-function-return-type": "off",
+
     // eslint-plugin-autofix
     "autofix/no-unused-vars": "error",
 
