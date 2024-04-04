@@ -1,7 +1,0 @@
-{
-	"name": "@biso24/tailwind",
-	"version": "1.0.0",
-	"private": true,
-	"main": "index.ts",
-	"module": "index.ts"
-}

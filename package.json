@@ -44,7 +44,6 @@
 		"@biso24/features": "*",
 		"@biso24/hooks": "*",
 		"@biso24/services": "*",
-		"@biso24/tailwind": "*",
 		"@biso24/theme": "*",
 		"@biso24/types": "*",
 		"@biso24/utils": "*",
