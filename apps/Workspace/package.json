@@ -1,0 +1,45 @@
+{
+	"name": "@biso24/workspace",
+	"version": "0.0.1",
+	"private": true,
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged"
+		}
+	},
+	"lint-staged": {
+		"*.{js,jsx,ts,tsx}": [
+			"yarn lint",
+			"yarn pretty"
+		]
+	},
+	"scripts": {
+		"android": "react-native run-android",
+		"ios": "react-native run-ios",
+		"start": "react-native start",
+		"lint": "eslint --fix",
+		"pretty": "prettier --write",
+		"format": "eslint --fix \"src/**/*.{js,jsx,ts,tsx}\" && prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
+		"jetify": "npx jetify",
+		"start:dev": "APP_ENV=development react-native start --reset-cache",
+		"start:staging": "APP_ENV=staging react-native start --reset-cache",
+		"start:production": "APP_ENV=production react-native start --reset-cache",
+		"test:coverage": "jest --collectCoverage && open coverage/index.html",
+		"ios7": "react-native run-ios --simulator=\"iPhone 7\"",
+		"ios8": "react-native run-ios --simulator=\"iPhone 8\"",
+		"ios11": "react-native run-ios --simulator=\"iPhone 11\"",
+		"ios11Pro": "react-native run-ios --simulator=\"iPhone 11 Pro\"",
+		"ios11Pro14": "react-native run-ios --simulator=\"iPhone 11 Pro (14.1)\"",
+		"ios11ProMax": "react-native run-ios --simulator=\"iPhone 11 Pro Max\"",
+		"build:apk": "cd android && ./gradlew assembleRelease",
+		"build:android": "cd android && ./gradlew bundleRelease"
+	},
+	"dependencies": {
+		"react": "18.2.0",
+		"react-native": "0.73.6",
+		"react-native-icomoon": "^0.1.1",
+		"react-native-safe-area-context": "^4.9.0",
+		"react-native-svg": "^15.1.0",
+		"react-native-vector-icons": "^10.0.3"
+	}
+}
