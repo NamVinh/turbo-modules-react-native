@@ -1,24 +1,32 @@
 {
   "name": "biso24-share-app",
   "private": true,
+  "workspaces": [
+    "modules/*",
+    "packages/*"
+  ],
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "yarn pretty --filter=\"./packages/*/*\""
+    ]
+  },
+  "engines": {
+    "node": ">= v18.14.0",
+    "npm": "please-use-yarn",
+    "pnpm": "please-use-yarn",
+    "yarn": ">= v1.22.19"
+  },
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
+    "pretty": "eslint --fix && prettier --write",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
-    "@repo/eslint-config": "*",
-    "@repo/typescript-config": "*",
     "prettier": "^3.2.5",
+    "eslint-config-standard-react": "*",
+    "standard-prettier": "*",
     "turbo": "latest"
-  },
-  "engines": {
-    "node": ">=18"
-  },
-  "packageManager": "yarn@1.22.21",
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ]
+  }
 }

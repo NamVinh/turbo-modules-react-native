@@ -1,0 +1,11 @@
+{
+  "name": "standard-prettier",
+  "version": "1.0.0",
+  "private": true,
+  "license": "MIT",
+  "main": "index.json",
+  "dependencies": {
+    "prettier": "^3.0.2",
+    "prettier-eslint": "^15.0.1"
+  }
+}
