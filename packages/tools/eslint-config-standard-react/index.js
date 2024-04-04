@@ -13,9 +13,12 @@ module.exports = {
     },
   },
   extends: ["standard-with-typescript", "prettier"],
-  plugins: ["react", "react-hooks", "prefer-arrow-functions"],
+  plugins: ["react", "react-hooks", "prefer-arrow-functions", "autofix"],
   rules: {
-    "arrow-body-style": ["error", "always"],
+    "autofix/arrow-body-style": ["error", "always"],
+
+    // eslint-plugin-autofix
+    "autofix/no-unused-vars": "error",
 
     // eslint-plugin-prefer-arrow-functions
     "prefer-arrow-functions/prefer-arrow-functions": [
