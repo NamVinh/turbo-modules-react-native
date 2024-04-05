@@ -6,7 +6,6 @@
  */
 import Icon from '@biso24/components/Icon';
 import Providers from '@biso24/components/Providers';
-import WelcomeShare from '@biso24/components/WelcomeShare';
 import React from 'react';
 import { SafeAreaView, ScrollView, StatusBar, View, useColorScheme } from 'react-native';
 import { Colors, Header } from 'react-native/Libraries/NewAppScreen';
@@ -64,7 +63,7 @@ const App = (): React.JSX.Element => {
 							backgroundColor: isDarkMode ? Colors.black : Colors.white,
 						}}
 					>
-						<WelcomeShare />
+						{/* <WelcomeShare /> */}
 						<Icon name="arrow-bold-left" size={64} />
 					</View>
 				</ScrollView>
