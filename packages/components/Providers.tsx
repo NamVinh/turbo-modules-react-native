@@ -5,7 +5,7 @@ import { SafeAreaView } from 'react-native';
 
 const Providers = ({ children }: PropsWithChildren) => {
 	return (
-		<NativeBaseProvider theme={theme}>
+		<NativeBaseProvider theme={theme} isSSR={false}>
 			<SafeAreaView>{children}</SafeAreaView>
 		</NativeBaseProvider>
 	);

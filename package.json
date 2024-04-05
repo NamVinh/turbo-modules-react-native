@@ -10,7 +10,8 @@
 			"**/@react-native-async-storage/async-storage",
 			"**/react",
 			"**/react-native",
-			"**/react-native/**"
+			"**/react-native/**",
+			"**/react-native-**"
 		]
 	},
 	"scripts": {
@@ -52,7 +53,6 @@
 		"react": "^18.2.0",
 		"react-native": "^0.73.6",
 		"react-native-icomoon": "^0.1.1",
-		"react-native-safe-area-context": "^4.9.0",
 		"react-native-svg": "^15.1.0",
 		"react-native-vector-icons": "^10.0.3"
 	},
@@ -60,6 +60,8 @@
 		"@babel/core": "^7.24.4",
 		"@babel/preset-env": "^7.24.4",
 		"@babel/runtime": "^7.24.4",
+		"@biso24/babel-config": "*",
+		"@biso24/metro-config": "*",
 		"@commitlint/cli": "^19.2.1",
 		"@commitlint/config-conventional": "^19.1.0",
 		"@react-native/babel-preset": "^0.75.0-main",
@@ -68,7 +70,6 @@
 		"@types/react": "^18.2.74",
 		"@typescript-eslint/eslint-plugin": "^6.4.0",
 		"@typescript-eslint/parser": "^7.5.0",
-		"@biso24/babel-config": "*",
 		"babel-plugin-module-resolver": "^5.0.0",
 		"commitlint-config-standard-commitlint": "*",
 		"eslint": "^8.0.1",
@@ -85,9 +86,9 @@
 		"eslint-plugin-react-hooks": "^4.6.0",
 		"husky": "^9.0.11",
 		"lint-staged": "^15.2.2",
-		"@biso24/metro-config": "*",
 		"prettier": "^3.2.5",
 		"prettier-eslint": "^16.3.0",
+		"react-native-dotenv": "^3.4.11",
 		"react-native-monorepo-tools": "^1.2.1",
 		"standard-prettier": "*",
 		"tsconfig": "*",
