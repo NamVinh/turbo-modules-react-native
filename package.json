@@ -9,9 +9,11 @@
 		"nohoist": [
 			"**/@react-native-async-storage/async-storage",
 			"**/react",
+			"**/react-native-safe-area-context",
 			"**/react-native",
 			"**/react-native/**",
-			"**/react-native-**"
+			"**/react-native-**",
+			"**/memoize"
 		]
 	},
 	"scripts": {
@@ -48,13 +50,17 @@
 		"@biso24/theme": "*",
 		"@biso24/types": "*",
 		"@biso24/utils": "*",
+		"@tanstack/react-query": "^5.28.14",
+		"axios": "^1.6.8",
 		"hex-to-rgba": "^2.0.1",
+		"memoize": "^10.0.0",
 		"native-base": "^3.4.28",
 		"react": "^18.2.0",
+		"react-icomoon": "^2.5.7",
 		"react-native": "^0.73.6",
-		"react-native-icomoon": "^0.1.1",
+		"react-native-mmkv-storage": "^0.9.1",
 		"react-native-svg": "^15.1.0",
-		"react-native-vector-icons": "^10.0.3"
+		"zustand": "^4.5.2"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.24.4",

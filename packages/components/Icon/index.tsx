@@ -1,8 +1,9 @@
-import React from 'react';
-import IconMoon, { type IconMoonProps } from 'react-native-icomoon';
+import IcoMoon, { type IconProps as IconPropsBase } from 'react-icomoon';
+import { Path, Svg } from 'react-native-svg';
 
 import iconSet from './selection.json';
 
+// console.log(iconList(iconSet));
 const IconNames = [
 	'move',
 	'file-doc',
@@ -88,13 +89,33 @@ const IconNames = [
 	'youtube',
 ] as const;
 
-type IconProps = {
+export interface IconProps extends Omit<IconPropsBase, 'icon'> {
 	disabled?: boolean;
-	name: (typeof IconNames)[number];
-} & Omit<IconMoonProps, 'iconSet'>;
+	icon: (typeof IconNames)[number];
+}
 
-const Icon = ({ name, ...restProps }: IconProps) => {
-	return <IconMoon iconSet={iconSet} name={name} {...restProps} />;
+const Icon = ({
+	size = 16,
+
+	disabled = false,
+	onClick,
+	onMouseLeave,
+	onMouseEnter,
+	...restProps
+}: IconProps) => {
+	return (
+		<IcoMoon
+			native
+			SvgComponent={Svg}
+			PathComponent={Path}
+			size={size}
+			iconSet={iconSet}
+			onClick={!disabled ? onClick : undefined}
+			onMouseLeave={!disabled ? onMouseLeave : undefined}
+			onMouseEnter={!disabled ? onMouseEnter : undefined}
+			{...restProps}
+		/>
+	);
 };
 
 export default Icon;

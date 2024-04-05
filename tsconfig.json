@@ -1,4 +1,4 @@
 {
-  "extends": "tsconfig/react-native.json",
-  "include": ["**/*"]
+	"extends": "tsconfig/react-native.json",
+	"include": ["**/*"]
 }

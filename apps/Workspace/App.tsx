@@ -6,6 +6,7 @@
  */
 import Icon from '@biso24/components/Icon';
 import Providers from '@biso24/components/Providers';
+import WelcomeShare from '@biso24/components/WelcomeShare';
 import React from 'react';
 import { SafeAreaView, ScrollView, StatusBar, View, useColorScheme } from 'react-native';
 import { Colors, Header } from 'react-native/Libraries/NewAppScreen';
@@ -45,6 +46,15 @@ import { Colors, Header } from 'react-native/Libraries/NewAppScreen';
 const App = (): React.JSX.Element => {
 	const isDarkMode = useColorScheme() === 'dark';
 
+	// const { setUser } = useAuth();
+
+	// const login = useMutation({
+	// 	mutationFn: async (data: LoginFormData) => {
+	// 		const user = await authService.login(data);
+	// 		setUser(user);
+	// 	},
+	// });
+
 	const backgroundStyle = {
 		backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
 	};
@@ -63,8 +73,19 @@ const App = (): React.JSX.Element => {
 							backgroundColor: isDarkMode ? Colors.black : Colors.white,
 						}}
 					>
-						{/* <WelcomeShare /> */}
-						<Icon name="arrow-bold-left" size={64} />
+						<WelcomeShare />
+
+						<Icon
+							icon="add-document"
+							size={64}
+							// onClick={async () => {
+							// 	await login.mutateAsync({
+							// 		email: 'hoand+1102@biso24.com',
+							// 		password: 'Biso24@2022',
+							// 		from: 'WORK_SPACE',
+							// 	});
+							// }}
+						/>
 					</View>
 				</ScrollView>
 			</SafeAreaView>

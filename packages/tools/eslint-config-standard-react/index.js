@@ -23,6 +23,10 @@ module.exports = {
 		// TS
 		'@typescript-eslint/strict-null-checks': 'off',
 		'@typescript-eslint/explicit-function-return-type': 'off',
+		'@typescript-eslint/strict-boolean-expressions': 'off',
+		'@typescript-eslint/no-non-null-assertion': 'off',
+		'@typescript-eslint/prefer-nullish-coalescing': 'off',
+		'@typescript-eslint/no-unsafe-argument': 'off',
 
 		// eslint-plugin-autofix
 		'autofix/no-unused-vars': 'error',
