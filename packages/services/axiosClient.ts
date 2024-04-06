@@ -1,8 +1,9 @@
 import { useAuthStore } from '@biso24/hooks/useAuth';
 import { type Token } from '@biso24/types/models/User';
 import { destroyAllZustandPersist } from '@biso24/utils';
-import { API_BASE_URL } from '@env';
+import { API_BASE_URL, API_DOMAIN_URL } from '@env';
 import axios, { type AxiosError, type CreateAxiosDefaults } from 'axios';
+import memoize from 'memoize';
 import { Platform } from 'react-native';
 
 const axiosOptions: CreateAxiosDefaults = {
@@ -32,7 +33,7 @@ const refreshTokenRequest = async (options: CreateAxiosDefaults) => {
 			},
 			{
 				headers: {
-					domain: API_BASE_URL || hostName,
+					domain: API_DOMAIN_URL || hostName,
 				},
 			},
 		);
@@ -49,7 +50,9 @@ const refreshTokenRequest = async (options: CreateAxiosDefaults) => {
 	}
 };
 
-const memoRefreshTokenRequest = refreshTokenRequest;
+const memoRefreshTokenRequest = memoize(refreshTokenRequest, {
+	maxAge: 10000,
+});
 
 axiosClient.interceptors.request.use(
 	(request) => {
@@ -58,7 +61,7 @@ axiosClient.interceptors.request.use(
 		if (!request.headers.Authorization && user) {
 			request.headers.Authorization = `Bearer ${user?.token?.accessKey}`;
 		}
-		request.headers.domain = API_BASE_URL || hostName;
+		request.headers.domain = API_DOMAIN_URL || hostName;
 
 		return request;
 	},

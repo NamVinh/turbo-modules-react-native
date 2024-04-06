@@ -1,6 +1,5 @@
 /* eslint-disable */
 const exclusionList = require('metro-config/src/defaults/exclusionList');
-const { getDefaultConfig, mergeConfig } = require('@react-native/metro-config');
 const { getMetroTools, getMetroAndroidAssetsResolutionFix } = require('react-native-monorepo-tools');
 
 const metroTools = getMetroTools();
