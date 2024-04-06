@@ -1,5 +1,5 @@
+import { extendTheme } from '@gluestack-ui/themed-native-base';
 import hexToRgba from 'hex-to-rgba';
-import { extendTheme } from 'native-base';
 
 const primary = '#32A1C8';
 const success = '#2FCE00';

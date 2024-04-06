@@ -1,13 +1,14 @@
 import { useAuthStore } from '@biso24/hooks/useAuth';
 import { type Token } from '@biso24/types/models/User';
 import { destroyAllZustandPersist } from '@biso24/utils';
+import { API_BASE_URL } from '@env';
 import axios, { type AxiosError, type CreateAxiosDefaults } from 'axios';
-import memoize from 'memoize';
 import { Platform } from 'react-native';
 
 const axiosOptions: CreateAxiosDefaults = {
-	baseURL: process.env.API_DOMAIN_URL,
+	baseURL: API_BASE_URL,
 	headers: {
+		Accept: 'application/json',
 		'Content-Type': 'application/json',
 	},
 };
@@ -31,7 +32,7 @@ const refreshTokenRequest = async (options: CreateAxiosDefaults) => {
 			},
 			{
 				headers: {
-					domain: process.env.API_DOMAIN_URL || hostName,
+					domain: API_BASE_URL || hostName,
 				},
 			},
 		);
@@ -48,18 +49,16 @@ const refreshTokenRequest = async (options: CreateAxiosDefaults) => {
 	}
 };
 
-const memoRefreshTokenRequest = memoize(refreshTokenRequest, {
-	maxAge: 10000,
-});
+const memoRefreshTokenRequest = refreshTokenRequest;
 
 axiosClient.interceptors.request.use(
 	(request) => {
 		const { user } = useAuthStore.getState();
 		const hostName = Platform.OS === 'ios' ? 'ios_host' : 'android_host';
 		if (!request.headers.Authorization && user) {
-			request.headers.Authorization = `Bearer ${user.token.accessKey}`;
+			request.headers.Authorization = `Bearer ${user?.token?.accessKey}`;
 		}
-		request.headers.domain = process.env.API_DOMAIN_URL || hostName;
+		request.headers.domain = API_BASE_URL || hostName;
 
 		return request;
 	},
@@ -85,7 +84,7 @@ axiosClient.interceptors.response.use(
 			const token = await memoRefreshTokenRequest(axiosOptions);
 			const request = error.config;
 			if (token) {
-				request!.headers.Authorization = `Bearer ${token.accessKey}`;
+				request!.headers.Authorization = `Bearer ${token?.accessKey}`;
 			}
 			return await axiosClient(request);
 		} else {

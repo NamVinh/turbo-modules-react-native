@@ -27,6 +27,7 @@ module.exports = {
 		'@typescript-eslint/no-non-null-assertion': 'off',
 		'@typescript-eslint/prefer-nullish-coalescing': 'off',
 		'@typescript-eslint/no-unsafe-argument': 'off',
+		'@typescript-eslint/no-misused-promises': 'off',
 
 		// eslint-plugin-autofix
 		'autofix/no-unused-vars': 'error',

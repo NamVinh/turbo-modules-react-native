@@ -7,6 +7,10 @@
 import Icon from '@biso24/components/Icon';
 import Providers from '@biso24/components/Providers';
 import WelcomeShare from '@biso24/components/WelcomeShare';
+import useAuth from '@biso24/hooks/useAuth';
+import authService, { type LoginFormData } from '@biso24/services/authService';
+import { Pressable } from '@gluestack-ui/themed-native-base';
+import { useMutation } from '@tanstack/react-query';
 import React from 'react';
 import { SafeAreaView, ScrollView, StatusBar, View, useColorScheme } from 'react-native';
 import { Colors, Header } from 'react-native/Libraries/NewAppScreen';
@@ -46,15 +50,6 @@ import { Colors, Header } from 'react-native/Libraries/NewAppScreen';
 const App = (): React.JSX.Element => {
 	const isDarkMode = useColorScheme() === 'dark';
 
-	// const { setUser } = useAuth();
-
-	// const login = useMutation({
-	// 	mutationFn: async (data: LoginFormData) => {
-	// 		const user = await authService.login(data);
-	// 		setUser(user);
-	// 	},
-	// });
-
 	const backgroundStyle = {
 		backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
 	};
@@ -74,7 +69,7 @@ const App = (): React.JSX.Element => {
 						}}
 					>
 						<WelcomeShare />
-
+						<Example />
 						<Icon
 							icon="add-document"
 							size={64}
@@ -90,6 +85,30 @@ const App = (): React.JSX.Element => {
 				</ScrollView>
 			</SafeAreaView>
 		</Providers>
+	);
+};
+
+export const Example = () => {
+	const { user, setUser } = useAuth();
+	const login = useMutation({
+		mutationFn: async (data: LoginFormData) => {
+			const user = await authService.login(data);
+			setUser(user);
+		},
+	});
+	console.log(user);
+	return (
+		<Pressable
+			onPress={async () => {
+				await login.mutateAsync({
+					email: 'hoand+1102@biso24.com',
+					password: 'Biso24@2022',
+					from: 'WORK_SPACE',
+				});
+			}}
+		>
+			<Icon icon="add-document" size={64} color="red" />
+		</Pressable>
 	);
 };
 
