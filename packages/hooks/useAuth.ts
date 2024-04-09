@@ -1,7 +1,8 @@
-import { type User } from '@biso24/types/models/User';
-import { MMKVLoader } from 'react-native-mmkv-storage';
+import { MMKV } from 'react-native-mmkv';
 import { create } from 'zustand';
 import { type StateStorage, createJSONStorage, persist } from 'zustand/middleware';
+
+import { type User } from '@biso24/types/models/User';
 
 export interface AuthState {
 	user: User | null;
@@ -11,18 +12,19 @@ export interface AuthState {
 	setRememberMe: (rememberMe: boolean) => void;
 }
 
-const storageMMKV = new MMKVLoader().initialize();
+const storageMMKV = new MMKV();
 
 // Custom storage object
 const storage: StateStorage = {
-	getItem: async (name: string): Promise<string | null> => {
-		return (await storageMMKV.getStringAsync(name)) || null;
+	setItem: (name, value) => {
+		storageMMKV.set(name, value);
 	},
-	setItem: async (name: string, value: string): Promise<void> => {
-		await storageMMKV.setStringAsync(name, value);
+	getItem: (name) => {
+		const value = storageMMKV.getString(name);
+		return value ?? null;
 	},
-	removeItem: async (name: string): Promise<void> => {
-		storageMMKV.removeItem(name);
+	removeItem: (name) => {
+		storageMMKV.delete(name);
 	},
 };
 

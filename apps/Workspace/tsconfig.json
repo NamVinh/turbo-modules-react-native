@@ -1,5 +1,5 @@
 {
-	"extends": "tsconfig/react-native.json",
+	"extends": "@biso24/ts-config/react-native.json",
 	"compilerOptions": {
 		"baseUrl": "./",
 		"paths": {

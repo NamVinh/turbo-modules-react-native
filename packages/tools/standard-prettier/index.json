@@ -9,19 +9,7 @@
 	"trailingComma": "all",
 	"endOfLine": "auto",
 
-	"importOrder": [
-		"^~/(.*)$",
-		"^~/app/(.*)$",
-		"^~/assets/(.*)$",
-		"^~/components/(.*)$",
-		"^~/constants/(.*)$",
-		"^~/pages/(.*)$",
-		"^~/stores/(.*)$",
-		"^~/types/(.*)$",
-		"^~/utils/(.*)$",
-		"^~/configs/(.*)$",
-		"^[./]"
-	],
+	"importOrder": ["^@biso24/(.*)$", "^~/(.*)$", "^[./]"],
 	"importOrderSeparation": true,
 	"importOrderSortSpecifiers": true,
 	"plugins": ["@trivago/prettier-plugin-sort-imports"]

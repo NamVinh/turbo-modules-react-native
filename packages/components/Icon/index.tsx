@@ -94,15 +94,7 @@ export interface IconProps extends Omit<IconPropsBase, 'icon'> {
 	icon: (typeof IconNames)[number];
 }
 
-const Icon = ({
-	size = 16,
-
-	disabled = false,
-	onClick,
-	onMouseLeave,
-	onMouseEnter,
-	...restProps
-}: IconProps) => {
+const Icon = ({ size = 16, disabled = false, onClick, onMouseLeave, onMouseEnter, ...restProps }: IconProps) => {
 	return (
 		<IcoMoon
 			native

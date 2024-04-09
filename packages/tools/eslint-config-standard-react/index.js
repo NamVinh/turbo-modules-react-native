@@ -19,7 +19,6 @@ module.exports = {
 		'default-case': 'off',
 		curly: ['error', 'all'],
 		'no-case-declarations': 'error',
-
 		// TS
 		'@typescript-eslint/strict-null-checks': 'off',
 		'@typescript-eslint/explicit-function-return-type': 'off',
@@ -28,11 +27,12 @@ module.exports = {
 		'@typescript-eslint/prefer-nullish-coalescing': 'off',
 		'@typescript-eslint/no-unsafe-argument': 'off',
 		'@typescript-eslint/no-misused-promises': 'off',
+		'@typescript-eslint/no-empty-interface': 'off',
+		'@typescript-eslint/consistent-type-definitions': 'off',
 
 		// eslint-plugin-autofix
 		'autofix/no-unused-vars': 'error',
 		'autofix/arrow-body-style': ['error', 'always'],
-
 		// eslint-plugin-prefer-arrow-functions
 		'prefer-arrow-functions/prefer-arrow-functions': [
 			'error',
@@ -43,7 +43,6 @@ module.exports = {
 				singleReturnOnly: false,
 			},
 		],
-
 		// eslint-plugin-react
 		'react/jsx-boolean-value': 'error',
 		'react/jsx-curly-brace-presence': ['error', 'never'],
@@ -61,7 +60,6 @@ module.exports = {
 				component: true,
 			},
 		],
-
 		// eslint-plugin-react-hooks
 		'react-hooks/rules-of-hooks': 'error',
 		'react-hooks/exhaustive-deps': 'warn',

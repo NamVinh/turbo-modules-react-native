@@ -1,10 +1,11 @@
+import { API_BASE_URL, API_DOMAIN_URL } from '@env';
+import axios, { type AxiosError, type CreateAxiosDefaults } from 'axios';
+import { Platform } from 'react-native';
+
 import { useAuthStore } from '@biso24/hooks/useAuth';
 import { type Token } from '@biso24/types/models/User';
 import { destroyAllZustandPersist } from '@biso24/utils';
-import { API_BASE_URL, API_DOMAIN_URL } from '@env';
-import axios, { type AxiosError, type CreateAxiosDefaults } from 'axios';
-import memoize from 'memoize';
-import { Platform } from 'react-native';
+import memoize from '@biso24/utils/memoize';
 
 const axiosOptions: CreateAxiosDefaults = {
 	baseURL: API_BASE_URL,
@@ -70,20 +71,33 @@ axiosClient.interceptors.request.use(
 	},
 );
 
-const MAX_RETRY = 3;
+const MAX_COUNT_RETRY = 3;
+const createRTController = () => {
+	let retry = 0;
 
-let retry = 0;
-const counterRetry = async () => {
-	return retry++;
+	return () => {
+		return {
+			retry,
+
+			reset: () => {
+				retry = 0;
+			},
+
+			update: () => {
+				retry++;
+			},
+		};
+	};
 };
+const rtController = createRTController();
 
 axiosClient.interceptors.response.use(
 	(response) => {
 		return response.data.data!;
 	},
 	async (error) => {
-		if (error.response?.data?.message === 'jwt expired' && retry <= MAX_RETRY) {
-			void counterRetry();
+		if (error.response?.data?.message === 'jwt expired' && rtController().retry <= MAX_COUNT_RETRY) {
+			rtController().update();
 			const token = await memoRefreshTokenRequest(axiosOptions);
 			const request = error.config;
 			if (token) {
@@ -91,7 +105,7 @@ axiosClient.interceptors.response.use(
 			}
 			return await axiosClient(request);
 		} else {
-			retry = 0;
+			rtController().reset();
 		}
 
 		if (error.response?.data?.message === 'jwt malformed') {

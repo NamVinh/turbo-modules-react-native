@@ -1,7 +1,7 @@
-import { Text } from '@gluestack-ui/themed-native-base';
+import { Text } from './gluestack-ui/text';
 
 const WelcomeShare = () => {
-	return <Text color="primaryAlpha.400">WelcomeShare</Text>;
+	return <Text color="$primary400">WelcomeShare</Text>;
 };
 
 export default WelcomeShare;

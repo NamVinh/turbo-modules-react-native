@@ -1,8 +1,11 @@
-import theme from '@biso24/theme';
-import { NativeBaseProvider } from '@gluestack-ui/themed-native-base';
+import { StyledProvider } from '@gluestack-style/react';
+import { OverlayProvider } from '@gluestack-ui/overlay';
+import { createProvider } from '@gluestack-ui/provider';
+import { ToastProvider } from '@gluestack-ui/toast';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import React, { type PropsWithChildren } from 'react';
-import { SafeAreaView } from 'react-native';
+import React from 'react';
+
+import { config } from '@biso24/theme';
 
 const staleTime = 20 * 1000; // 20ms
 
@@ -23,14 +26,19 @@ const queryClient = new QueryClient({
 	},
 });
 
-const Providers = ({ children }: PropsWithChildren) => {
+const GluestackUIStyledProvider = createProvider({ StyledProvider });
+
+type GluestackUIProviderProps = Partial<React.ComponentProps<typeof GluestackUIStyledProvider>>;
+
+const Providers = ({ children, ...props }: GluestackUIProviderProps) => {
 	return (
-		<NativeBaseProvider theme={theme}>
-			<QueryClientProvider client={queryClient}>
-				<SafeAreaView>{children}</SafeAreaView>
-				{/* <ReactQueryDevtools initialIsOpen={false} /> */}
-			</QueryClientProvider>
-		</NativeBaseProvider>
+		<GluestackUIStyledProvider colorMode={props.colorMode ? props.colorMode : 'light'} config={config} {...props}>
+			<OverlayProvider>
+				<ToastProvider>
+					<QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+				</ToastProvider>
+			</OverlayProvider>
+		</GluestackUIStyledProvider>
 	);
 };
 export default Providers;

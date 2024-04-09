@@ -7,13 +7,10 @@
 			"packages/**/*"
 		],
 		"nohoist": [
-			"**/@react-native-async-storage/async-storage",
 			"**/react",
-			"**/react-native-safe-area-context",
 			"**/react-native",
 			"**/react-native/**",
-			"**/react-native-**",
-			"**/memoize"
+			"**/react-native-**"
 		]
 	},
 	"scripts": {
@@ -50,17 +47,35 @@
 		"@biso24/theme": "*",
 		"@biso24/types": "*",
 		"@biso24/utils": "*",
-		"@gluestack-ui/themed-native-base": "^0.1.107-alpha2",
+		"@expo/html-elements": "latest",
+		"@gluestack-style/animation-resolver": "latest",
+		"@gluestack-style/legend-motion-animation-driver": "latest",
+		"@gluestack-style/react": "latest",
+		"@gluestack-ui/actionsheet": "latest",
+		"@gluestack-ui/form-control": "latest",
+		"@gluestack-ui/icon": "latest",
+		"@gluestack-ui/input": "latest",
+		"@gluestack-ui/overlay": "latest",
+		"@gluestack-ui/pressable": "latest",
+		"@gluestack-ui/provider": "latest",
+		"@gluestack-ui/select": "latest",
+		"@gluestack-ui/toast": "latest",
+		"@legendapp/motion": "latest",
+		"@react-navigation/bottom-tabs": "^6.5.20",
+		"@react-navigation/native": "^6.1.17",
+		"@react-navigation/native-stack": "^6.9.26",
 		"@tanstack/react-query": "^5.29.0",
 		"@tanstack/react-query-devtools": "^5.29.0",
 		"axios": "^1.6.8",
 		"hex-to-rgba": "^2.0.1",
-		"memoize": "^10.0.0",
+		"mimic-function": "^5.0.1",
 		"react": "^18.2.0",
+		"react-hook-form": "^7.51.2",
 		"react-icomoon": "^2.5.7",
 		"react-native": "^0.73.6",
-		"react-native-mmkv-storage": "^0.9.1",
+		"react-native-mmkv": "^2.12.2",
 		"react-native-svg": "13.4.0",
+		"typescript": "^5.4.4",
 		"zustand": "^4.5.2"
 	},
 	"devDependencies": {
@@ -69,6 +84,7 @@
 		"@babel/runtime": "^7.24.4",
 		"@biso24/babel-config": "*",
 		"@biso24/metro-config": "*",
+		"@biso24/ts-config": "*",
 		"@commitlint/cli": "^19.2.1",
 		"@commitlint/config-conventional": "^19.1.0",
 		"@react-native/babel-preset": "^0.75.0-main",
@@ -98,7 +114,6 @@
 		"react-native-dotenv": "^3.4.11",
 		"react-native-monorepo-tools": "^1.2.1",
 		"standard-prettier": "*",
-		"tsconfig": "*",
 		"turbo": "latest"
 	}
 }
